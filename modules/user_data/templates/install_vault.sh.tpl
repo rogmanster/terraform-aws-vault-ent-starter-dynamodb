@@ -39,7 +39,7 @@ chown root:vault /opt/vault/vault.hclic
 chmod 0640 /opt/vault/vault.hclic
 
 cat << EOF > /etc/vault.d/vault.hcl
-disable_performance_standby = false #~~Added to enable perf stby
+disable_performance_standby = true #~~Changed to disable perf stby for dynamodb
 ui = true
 disable_mlock = true
 
