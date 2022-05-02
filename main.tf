@@ -15,6 +15,7 @@ module "iam" {
   resource_name_prefix         = var.resource_name_prefix
   secrets_manager_arn          = var.secrets_manager_arn
   user_supplied_iam_role_name  = var.user_supplied_iam_role_name
+  dynamodb_arn                 = var.dynamodb_arn
 }
 
 module "kms" {
@@ -91,4 +92,6 @@ module "vm" {
   vault_target_group_arn    = module.loadbalancer.vault_target_group_arn
   vpc_id                    = module.networking.vpc_id
   block_device_mappings     = var.block_device_mappings #~Added to change storage type
+  dynamodb_table            = var.dynamodb_table #~Added dynamodb table for Vault stanza
+
 }

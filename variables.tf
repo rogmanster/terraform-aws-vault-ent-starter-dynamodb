@@ -1,3 +1,11 @@
+//Added - dynamodb table for Vault stanza
+variable "dynamodb_table" {
+}
+
+//Added dynamodb arn for IAM
+variable "dynamodb_arn" {
+}
+
 variable "allowed_inbound_cidrs_lb" {
   type        = list(string)
   description = "(Optional) List of CIDR blocks to permit inbound traffic from to load balancer"

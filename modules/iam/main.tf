@@ -135,3 +135,42 @@ data "aws_iam_policy_document" "s3_bucket_vault_license" {
     ]
   }
 }
+
+//dynamodb
+
+resource "aws_iam_role_policy" "vault_dynamodb" {
+  count  = var.user_supplied_iam_role_name != null ? 0 : 1
+  name   = "${var.resource_name_prefix}-vault-dynamodb"
+  role   = aws_iam_role.instance_role[0].id
+  policy = data.aws_iam_policy_document.vault_dynamodb.json
+}
+
+data "aws_iam_policy_document" "vault_dynamodb" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+         "dynamodb:DescribeLimits",
+         "dynamodb:DescribeTimeToLive",
+         "dynamodb:ListTagsOfResource",
+         "dynamodb:DescribeReservedCapacityOfferings",
+         "dynamodb:DescribeReservedCapacity",
+         "dynamodb:ListTables",
+         "dynamodb:BatchGetItem",
+         "dynamodb:BatchWriteItem",
+         "dynamodb:CreateTable",
+         "dynamodb:DeleteItem",
+         "dynamodb:GetItem",
+         "dynamodb:GetRecords",
+         "dynamodb:PutItem",
+         "dynamodb:Query",
+         "dynamodb:UpdateItem",
+         "dynamodb:Scan",
+         "dynamodb:DescribeTable",
+    ]
+
+    resources = [
+      var.dynamodb_arn,
+    ]
+  }
+}

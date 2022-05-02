@@ -43,17 +43,23 @@ disable_performance_standby = false #~~Added to enable perf stby
 ui = true
 disable_mlock = true
 
-storage "raft" {
-  path    = "/opt/vault/data"
-  node_id = "$instance_id"
-  retry_join {
-    auto_join = "provider=aws region=${region} tag_key=${name}-vault tag_value=server"
-    auto_join_scheme = "https"
-    leader_tls_servername = "${leader_tls_servername}"
-    leader_ca_cert_file = "/opt/vault/tls/vault-ca.pem"
-    leader_client_cert_file = "/opt/vault/tls/vault-cert.pem"
-    leader_client_key_file = "/opt/vault/tls/vault-key.pem"
-  }
+#storage "raft" {
+#  path    = "/opt/vault/data"
+#  node_id = "$instance_id"
+#  retry_join {
+#    auto_join = "provider=aws region=${region} tag_key=${name}-vault tag_value=server"
+#    auto_join_scheme = "https"
+#    leader_tls_servername = "${leader_tls_servername}"
+#    leader_ca_cert_file = "/opt/vault/tls/vault-ca.pem"
+#    leader_client_cert_file = "/opt/vault/tls/vault-cert.pem"
+#    leader_client_key_file = "/opt/vault/tls/vault-key.pem"
+#  }
+#}
+
+storage "dynamodb" {
+  ha_enabled = "true"
+  region     = "${region}"
+  table      = "${dynamodb_table}"
 }
 
 cluster_addr = "https://$local_ipv4:8201"

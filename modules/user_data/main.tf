@@ -9,7 +9,8 @@ locals {
       s3_bucket_vault_license = var.aws_bucket_vault_license
       vault_license_name      = var.vault_license_name
       secrets_manager_arn     = var.secrets_manager_arn
-      leader_tls_servername   = var.leader_tls_servername
+      dynamodb_table            = var.dynamodb_table
+      #leader_tls_servername   = var.leader_tls_servername
     }
   )
 }

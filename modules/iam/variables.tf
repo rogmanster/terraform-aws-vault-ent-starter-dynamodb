@@ -1,3 +1,7 @@
+//dynamodb arn for IAM policy
+variable"dynamodb_arn" {
+}
+
 variable "aws_bucket_vault_license_arn" {
   type        = string
   description = "ARN of S3 bucket with Vault license"
