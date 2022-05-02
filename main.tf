@@ -71,6 +71,7 @@ module "user_data" {
   user_supplied_userdata_path = var.user_supplied_userdata_path
   vault_license_name          = module.object_storage.vault_license_name
   vault_version               = var.vault_version
+  dynamodb_table              = var.dynamodb_table #~Added for Vault stanza
 }
 
 module "vm" {
