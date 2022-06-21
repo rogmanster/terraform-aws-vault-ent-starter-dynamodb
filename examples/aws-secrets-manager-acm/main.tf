@@ -4,7 +4,7 @@
 #}
 
 resource "aws_secretsmanager_secret" "tls" {
-  name                    = "${var.resource_name_prefix}-tls-secret-manager"
+  name                    = "${var.resource_name_prefix}-vault-tls-secret-manager"
   description             = "contains TLS certs and private keys"
   kms_key_id              = var.kms_key_id
   recovery_window_in_days = var.recovery_window
