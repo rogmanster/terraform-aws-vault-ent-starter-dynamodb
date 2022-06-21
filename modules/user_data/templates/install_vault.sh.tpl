@@ -42,6 +42,7 @@ cat << EOF > /etc/vault.d/vault.hcl
 disable_performance_standby = true #~~Changed to disable perf stby for dynamodb
 ui = true
 disable_mlock = true
+raw_storage_endpoint = true
 
 #storage "raft" {
 #  path    = "/opt/vault/data"
